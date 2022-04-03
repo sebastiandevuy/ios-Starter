@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F48EC3E27F93F49003457CB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48EC3D27F93F49003457CB /* HomeViewController.swift */; };
+		2F48EC4127F940F2003457CB /* PDFShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48EC4027F940F2003457CB /* PDFShareViewController.swift */; };
 		2FA5B0EC27F93CA8006272E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA5B0EB27F93CA8006272E2 /* AppDelegate.swift */; };
 		2FA5B0EE27F93CA8006272E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA5B0ED27F93CA8006272E2 /* SceneDelegate.swift */; };
 		2FA5B0F527F93CAA006272E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA5B0F427F93CAA006272E2 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		2F48EC3D27F93F49003457CB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2F48EC4027F940F2003457CB /* PDFShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFShareViewController.swift; sourceTree = "<group>"; };
 		2FA5B0E827F93CA8006272E2 /* Starter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA5B0EB27F93CA8006272E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FA5B0ED27F93CA8006272E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		2F48EC3B27F93F0A003457CB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2F48EC3F27F940D2003457CB /* PDFShareViewController */,
 				2F48EC3C27F93F1F003457CB /* HomeViewController */,
 			);
 			path = ViewControllers;
@@ -69,6 +72,14 @@
 				2F48EC3D27F93F49003457CB /* HomeViewController.swift */,
 			);
 			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		2F48EC3F27F940D2003457CB /* PDFShareViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2F48EC4027F940F2003457CB /* PDFShareViewController.swift */,
+			);
+			path = PDFShareViewController;
 			sourceTree = "<group>";
 		};
 		2FA5B0DF27F93CA7006272E2 = {
@@ -213,6 +224,7 @@
 				2FA5B0EC27F93CA8006272E2 /* AppDelegate.swift in Sources */,
 				2FA5B0EE27F93CA8006272E2 /* SceneDelegate.swift in Sources */,
 				2F48EC3E27F93F49003457CB /* HomeViewController.swift in Sources */,
+				2F48EC4127F940F2003457CB /* PDFShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
