@@ -24,29 +24,46 @@ class PDFShareViewController: UIViewController {
         let session = URLSession.shared
         guard let url = URL(string: documentPathToLoad) else { return }
         let documentUrlRequest = URLRequest(url: url)
-        // If no download method is available just make an api call expecting Data
-        let downloadTask = session.downloadTask(with: documentUrlRequest) { [weak self] location, response, error in
+        
+//        let downloadTask = session.downloadTask(with: documentUrlRequest) { [weak self] location, _, error in
+//            if let documentDonwloadLocation = location {
+//                guard let data = try? Data(contentsOf: documentDonwloadLocation) else { return }
+//                self?.loadFileAndPromptActivity(data)
+//            }
+//        }
+//        downloadTask.resume()
+        
+        let dataTask = session.dataTask(with: documentUrlRequest) { [weak self] documentData, _, error in
             // Handle error. Not done here for validation purposes
-            if let documentDonwloadLocation = location {
-                self?.loadFileAndPromptActivity(documentDonwloadLocation)
+            if let documentData = documentData {
+                self?.loadFileAndPromptActivity(documentData)
             }
         }
-        downloadTask.resume()
+        dataTask.resume()
     }
     
-    private func loadFileAndPromptActivity(_ documentUrl: URL) {
-        guard let documentData = NSData(contentsOf: documentUrl) else { return }
+    private func createFileUrl(withName fileName: String,
+                               fileExtension: String,
+                               data: Data) throws -> URL {
+        let file = "\(fileName).\(fileExtension)"
+        let fileManager = FileManager.default
+        let tempUrl = fileManager.temporaryDirectory
+        let tempFileUrlWithName = tempUrl.appendingPathComponent(file)
+        if fileManager.fileExists(atPath: tempFileUrlWithName.path) {
+            try fileManager.removeItem(at: tempFileUrlWithName)
+        }
+
+        try data.write(to: tempFileUrlWithName)
+        let url = URL(fileURLWithPath: tempFileUrlWithName.path)
+        return url
+    }
+    
+    private func loadFileAndPromptActivity(_ data: Data) {
+        guard let fileUrl = try? createFileUrl(withName: "Receipt89345678", fileExtension: "pdf", data: data) else { return }
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            let activityViewController = UIActivityViewController(activityItems: [documentData], applicationActivities: nil)
+            let activityViewController = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
             self.present(activityViewController, animated: true, completion: nil)
         }
-        
     }
-    
-//    func doStuff() {
-//        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [documento!], applicationActivities: nil)
-//                        activityViewController.popoverPresentationController?.sourceView=self.view
-//                        present(activityViewController, animated: true, completion: nil)
-//    }
 }
